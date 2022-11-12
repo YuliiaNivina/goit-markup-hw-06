@@ -282,6 +282,7 @@ img {
   border-radius: var(--border-radius);
 }
 .modal-close {
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   position: absolute;
   top: 8px;
   right: 8px;
@@ -318,18 +319,22 @@ img {
   line-height: 1.15;
 }
 .form-line {
+  position: relative;
   margin-bottom: 10px;
   display: block;
   text-align: left;
 
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.17;
   letter-spacing: 0.01em;
 }
-.form-line > .lable {
+.form-label {
+  margin-bottom: 4px;
+
+  display: block;
   color: var(--secondary-text-color);
 }
-.form-line .input {
+.form-input {
   width: 100%;
   height: 40px;
   padding-left: 42px;
@@ -349,19 +354,18 @@ img {
   border-radius: var(--border-radius);
 }
 .form-line > .comment::placeholder {
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
   color: rgba(117, 117, 117, 0.5);
-}
-.form-input {
-  position: relative;
-  margin-top: 4px;
 }
 .form-icon {
   position: absolute;
-  top: 50%;
+  bottom: 0;
   left: 0;
-  transform: translateY(-50%);
 
   margin-left: 12px;
+  margin-bottom: 11px;
 
   fill: currentColor;
 }
@@ -369,25 +373,26 @@ img {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--link-color);
 }
-.form-line:focus-within .input {
+.form-line:focus-within .form-input {
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
   border-color: var(--link-color);
 }
 
 .form-agree {
-  position: relative;
   display: inline-flex;
   align-items: center;
   margin-bottom: 30px;
+}
+.form-check-text {
+  margin-left: 8px;
+  margin-right: 5px;
 
   line-height: 1.71;
   color: var(--secondary-text-color);
+  user-select: none;
 }
-
 .form-agree a {
-  margin-left: 5px;
-
   color: var(--link-color);
   text-underline-offset: 3px;
 }
@@ -403,19 +408,19 @@ img {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-.form-uncheck-icon {
-  margin-right: 8px;
+.form-checkbox-icon .uncheck {
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.form-check-icon {
-  position: absolute;
+.form-checkbox-icon .check {
+  opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.form-checkbox:checked + .form-checkbox-icon .uncheck {
   opacity: 0;
 }
-.form-checkbox:checked ~ .form-check-icon {
-  /* transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+.form-checkbox:checked + .form-checkbox-icon .check {
   opacity: 1;
-  background-color: var(--link-color);
-  border-radius: 2px;
-  fill: var(--main-white-color);
 }
 
 /* Наші переваги */
@@ -618,7 +623,7 @@ img {
 }
 .link-socials {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   display: flex;
   align-items: center;
@@ -690,7 +695,7 @@ img {
 
 /* Контакти футер */
 .contacts-footer-box {
-  margin-right: 70px;
+  margin-right: auto;
 }
 .contacts-footer {
   margin-top: 20px;
